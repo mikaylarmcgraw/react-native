@@ -1,45 +1,24 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import React, { useState } from "react";
+import SignUp from "./views/SignUp/SignUp";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Entry from "./views/Entry/Entry";
+import Login from "./views/Login/Login";
+import ForgotPassword from "./views/ForgotPassword/ForgotPassword";
+import Home from "./views/Home/Home";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Dished</Text>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Whip something up!</Text>
-        <Icon name="arrow-forward" size={20} color="#fff" style={styles.icon} />
-      </TouchableOpacity>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Entry">
+        <Stack.Screen name="Entry" component={Entry} />
+        <Stack.Screen name="Sign Up" component={SignUp} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#7D29EE",
-    padding: 10,
-    borderRadius: 6,
-    flexDirection: "row",
-    width: "50%",
-    position: "absolute",
-    bottom: "20%",
-  },
-  buttonText: {
-    color: "#ffff",
-    fontWeight: "bold",
-  },
-  icon: {
-    marginLeft: 5,
-  },
-  header: {
-    fontSize: 50,
-    fontWeight: "bold",
-  },
-});
