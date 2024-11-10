@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 
 export default function ForgotPassword() {
   const [showEmail, setShowEmail] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   function onPress() {
     setShowEmail(!showEmail);
@@ -30,7 +31,12 @@ export default function ForgotPassword() {
           <Text>Thank you an email has been sent!</Text>
         )}
 
-        <Link style={styles.link} to={{ screen: "Login" }}>
+        <Link
+          style={[styles.link, isHovered && styles.linkHovered]}
+          to={{ screen: "Login" }}
+          onPressIn={() => setIsHovered(true)}
+          onPressOut={() => setIsHovered(false)}
+        >
           Back to Login
         </Link>
       </View>
@@ -55,7 +61,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   link: {
-    marginRight: 140,
-    marginTop: 50,
+    color: "blue",
+    marginTop: 10,
+  },
+  linkHovered: {
+    textDecorationLine: "underline",
   },
 });

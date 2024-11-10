@@ -29,6 +29,14 @@ export default function LoginScreen({ navigation }) {
         >
           Forgot password?
         </Link>
+        <Link
+          style={[styles.link, isHovered && styles.linkHovered]}
+          to={{ screen: "SignUp" }}
+          onPressIn={() => setIsHovered(true)}
+          onPressOut={() => setIsHovered(false)}
+        >
+          Create Dished account
+        </Link>
       </View>
     </>
   );
@@ -46,15 +54,15 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 6,
     width: "70%",
+    marginBottom: 40,
   },
   buttonText: {
     color: "white",
     fontWeight: "bold",
   },
   link: {
-    marginRight: 140,
-    marginTop: 50,
     color: "blue",
+    marginTop: 10,
   },
   linkHovered: {
     textDecorationLine: "underline",
